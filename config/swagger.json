@@ -1,0 +1,97 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "No description",
+    "version" : "1.0.0",
+    "title" : "monggovest"
+  },
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/api/user" : {
+      "get" : {
+        "tags" : [ "Find User" ],
+        "summary" : "Find User",
+        "parameters" : [ {
+          "name" : "user information",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "x-example" : "username"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "signup" ],
+        "summary" : "Sign Up",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "x-examples" : {
+            "application/json" : "email"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/api/user/:id" : {
+      "put" : {
+        "tags" : [ "Update" ],
+        "summary" : "Update User",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "x-examples" : {
+            "application/json" : "username"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/api/user/login" : {
+      "post" : {
+        "tags" : [ "login" ],
+        "summary" : "Log In",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "x-examples" : {
+            "application/json" : "username"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Status 201"
+          }
+        }
+      }
+    }
+  }
+}
