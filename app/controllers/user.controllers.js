@@ -168,15 +168,22 @@ console.log(decoded)
         })
     }
     exports.invest_lot = (req, res) => {
-        Post.findById(req.params._id, ()=>{
-            Post.find({lot_tersedia:req.body.lot_tersedia}, (err,lot)=>{
+        Post.findById(req.params.id, (err,oke)=>{
+                console.log(oke)
+                //oke hanya penamaan untuk judul hasil pencarian dr Post . jd oke=Post oke.Apapun = oke.(item apapun yang ada di Post)
                 var lot = new Lot ({ 
                     posts: req.params.id,
                     investor: req.decoded,
-                    lot_tersedia: req.body.lot_tersedia,
-                jumlah_lot: req.body.jumlah_lot
+                    jumlah_lot: req.body.jumlah_lot,
+                    foto: oke.foto,
+                    nama_ternak: oke.nama_ternak,
+                    asal: oke.asal,
+                    harga: oke.harga,
+                total_harga: req.body.jumlah_lot * oke.harga
+
+
             })
-                if(req.body.jumlah_lot > req.body.lot_tersedia){
+                if(req.body.jumlah_lot > oke.lot_tersedia){
                     res.status(400).json({
                         success:false,
                         message: 'failed'
@@ -193,9 +200,9 @@ console.log(decoded)
                       });
                     })}
                 })
-})}
+}
     exports.user_invest = (req, res) => {
-        Lot.findById(req.params._id, (err)=>{
+        Lot.findById(req.params.id, (err, okedeh)=>{
         var invest = new Invest ({ 
             lots: req.params.id,
             investor: req.decoded,
@@ -205,7 +212,16 @@ console.log(decoded)
         nomor_hp: req.body.nomor_hp,
         email_konfirmasi: req.body.email_konfirmasi,
         metode_pembayaran: req.body.metode_pembayaran,
-        jumlah_lot: req.body.jumlah_lot,
+        posts: okedeh.posts,
+        foto: okedeh.foto,
+        nama_ternak: okedeh.nama_ternak,
+        asal: okedeh.asal,
+        harga: okedeh.harga,
+        jumlah_lot: okedeh.jumlah_lot,
+        total_harga: okedeh.total_harga,
+        
+       
+        
         status: "Belum Terbayar"
     })
 

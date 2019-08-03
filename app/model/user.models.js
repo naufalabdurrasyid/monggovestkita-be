@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema({
   foto: String,
   nama_ternak: String,
   asal: String,
-  harga: String,
+  harga: Number,
   lot_tersedia: Number,
 
   lots: {

@@ -12,8 +12,13 @@ const investSchema = Schema({
     email_konfirmasi: String,
     metode_pembayaran: String,
     jumlah_lot: Number,
-    status: String
-
+    foto: String,
+    nama_ternak: String,
+    asal: String,
+    harga: Number,
+    posts: String,
+    status: String,
+    total_harga: Number
   });
 
   module.exports = mongoose.model('Invest',investSchema);
